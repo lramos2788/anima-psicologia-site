@@ -1,78 +1,80 @@
 'use client'
 
-import Image from 'next/image'
 import Link from 'next/link'
 import { motion } from 'framer-motion'
-import { ArrowRight, Sparkles } from 'lucide-react'
+import { ArrowRight } from 'lucide-react'
 
 export default function HeroSection() {
   return (
-    <section className="relative min-h-[90vh] flex items-center justify-center overflow-hidden">
-      {/* Background Image */}
-      <div className="absolute inset-0">
-        <Image
-          src="/images/espaco-1.jpeg"
-          alt="Espaço ANIMA - ambiente terapêutico acolhedor"
-          fill
-          className="object-cover"
-          priority
-          sizes="100vw"
-        />
-        <div className="absolute inset-0 bg-gradient-to-b from-anima-blue-500/85 via-anima-blue-500/75 to-anima-blue-500/90" />
-      </div>
+    <section className="relative min-h-[90vh] flex flex-col justify-center overflow-hidden bg-marfim px-6 py-24 md:px-12 lg:px-24">
+      
+      {/* Elemento de fundo sutil (meio círculo abstrato) para criar profundidade sem poluir */}
+      <div className="absolute top-0 right-0 -translate-y-12 translate-x-1/3 w-[600px] h-[600px] bg-bege/50 rounded-full blur-3xl opacity-60 pointer-events-none" />
+      <div className="absolute bottom-0 left-0 translate-y-1/3 -translate-x-1/4 w-[400px] h-[400px] bg-dourado/10 rounded-full blur-3xl opacity-50 pointer-events-none" />
 
-      {/* Content */}
-      <div className="relative z-10 max-w-[1200px] mx-auto px-4 sm:px-6 py-32 text-center">
+      <div className="relative z-10 max-w-4xl mx-auto text-center">
+        
+        {/* Kicker / Selo Superior */}
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
+          initial={{ opacity: 0, y: 15 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8 }}
-          className="flex items-center justify-center gap-2 mb-6"
+          transition={{ duration: 0.6, ease: "easeOut" }}
+          className="mb-8 inline-flex items-center justify-center"
         >
-          <Sparkles className="w-5 h-5 text-anima-amber-400" />
-          <span className="text-anima-amber-400 text-sm font-medium uppercase tracking-widest">
-            Psicoterapia Integrativa em Itapuã
+          <span className="text-madeira text-xs md:text-sm font-bold uppercase tracking-[0.2em]">
+            Espaço Clínico de Psicologia em Itapuã
           </span>
         </motion.div>
 
+        {/* Título Principal (Playfair Display) */}
         <motion.h1
-          initial={{ opacity: 0, y: 30 }}
+          initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.15 }}
-          className="font-display text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold text-white leading-tight tracking-tight mb-6"
+          transition={{ duration: 0.6, delay: 0.1, ease: "easeOut" }}
+          className="font-serif text-5xl md:text-7xl lg:text-8xl text-grafite leading-[1.1] tracking-tight mb-8"
         >
-          Espaço{' '}
-          <span className="text-anima-amber-400">ANIMA</span>
+          Espaço <span className="font-semibold text-madeira">ANIMA</span>
         </motion.h1>
 
-        <motion.p
-          initial={{ opacity: 0, y: 30 }}
+        {/* Headline Forte */}
+        <motion.h2
+          initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.3 }}
-          className="max-w-2xl mx-auto text-lg sm:text-xl text-white/80 leading-relaxed mb-10 font-light"
+          transition={{ duration: 0.6, delay: 0.2, ease: "easeOut" }}
+          className="font-serif text-2xl md:text-3xl lg:text-4xl text-grafite/90 mb-6"
         >
-          Aqui, a profundidade da escuta psicanalítica encontra a clareza das
-          práticas baseadas em evidências.
+          Escuta profunda. Técnica rigorosa. Cuidado singular.
+        </motion.h2>
+
+        {/* Subtítulo (Lato) */}
+        <motion.p
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, delay: 0.3, ease: "easeOut" }}
+          className="max-w-3xl mx-auto text-base md:text-lg text-grafite/80 leading-relaxed font-light mb-12"
+        >
+          Reunimos Psicanálise, Terapia Cognitivo-Comportamental e Avaliação Psicológica em um ambiente construído para acolher diferentes formas de sofrimento psíquico sem abrir mão da excelência clínica.
         </motion.p>
 
+        {/* Call to Actions */}
         <motion.div
-          initial={{ opacity: 0, y: 30 }}
+          initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.45 }}
-          className="flex flex-col sm:flex-row items-center justify-center gap-4"
+          transition={{ duration: 0.6, delay: 0.4, ease: "easeOut" }}
+          className="flex flex-col sm:flex-row items-center justify-center gap-5"
         >
           <Link
-            href="/agendamento"
-            className="inline-flex items-center gap-2 bg-anima-amber-400 hover:bg-anima-amber-300 text-anima-blue-800 px-8 py-4 rounded-lg font-semibold text-base transition-all hover:shadow-lg hover:scale-[1.02] active:scale-[0.98]"
+            href="#profissionais"
+            className="w-full sm:w-auto inline-flex justify-center items-center gap-2 bg-madeira text-marfim px-8 py-4 rounded-sm font-medium text-sm transition-all hover:bg-madeira/90 shadow-sm"
           >
-            Agendar Atendimento
-            <ArrowRight className="w-5 h-5" />
+            Conhecer os Profissionais
           </Link>
           <Link
-            href="/quiz"
-            className="inline-flex items-center gap-2 bg-white/10 hover:bg-white/20 text-white px-8 py-4 rounded-lg font-medium text-base transition-all backdrop-blur-sm border border-white/20"
+            href="#agendamento"
+            className="w-full sm:w-auto inline-flex justify-center items-center gap-2 bg-transparent text-grafite border border-grafite/30 px-8 py-4 rounded-sm font-medium text-sm transition-all hover:bg-grafite/5"
           >
-            Descubra seu Caminho
+            Solicitar Agendamento
+            <ArrowRight className="w-4 h-4" />
           </Link>
         </motion.div>
       </div>

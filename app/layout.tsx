@@ -1,108 +1,47 @@
-import { Playfair_Display, Inter } from 'next/font/google'
-import './globals.css'
-import { Toaster } from '@/components/ui/sonner'
-import { ChunkLoadErrorHandler } from '@/components/chunk-load-error-handler'
 import type { Metadata } from 'next'
+import { Playfair_Display, Lato } from 'next/font/google'
+import Header from '@/components/header'
+import Footer from '@/components/footer'
+import HeroSection from './_components/hero-section'
+import ServicesPreview from './_components/services-preview'
+import TeamPreview from './_components/team-preview'
+import CtaSection from './_components/cta-section'
+import './globals.css'
 
-export const dynamic = 'force-dynamic'
-
-const playfair = Playfair_Display({
+// Configuração da tipografia de títulos (Sábio/Sofisticação)
+const playfair = Playfair_Display({ 
   subsets: ['latin'],
-  variable: '--font-display',
-  display: 'swap',
+  variable: '--font-playfair',
+  weight: ['400', '600', '700'],
 })
 
-const inter = Inter({
+// Configuração da tipografia de corpo (Clareza/Modernidade)
+const lato = Lato({ 
   subsets: ['latin'],
-  variable: '--font-sans',
-  display: 'swap',
+  variable: '--font-lato',
+  weight: ['300', '400', '700'],
 })
 
 export const metadata: Metadata = {
-  metadataBase: new URL(process.env.NEXTAUTH_URL ?? 'http://localhost:3000'),
-  title: {
-    default: 'Espaço ANIMA | Psicólogo em Itapuã, Salvador - Psicoterapia Integrativa',
-    template: '%s | Espaço ANIMA',
-  },
-  description:
-    'Espaço ANIMA: clínica de psicoterapia integrativa em Itapuã, Salvador. Psicanálise e Terapia Cognitivo-Comportamental (TCC). Atendimento individual, em grupo, avaliações psicológicas e cursos.',
-  keywords: [
-    'psicólogo Itapuã',
-    'psicólogo Salvador',
-    'psicoterapia Salvador',
-    'psicanálise Salvador',
-    'TCC Salvador',
-    'terapia cognitivo comportamental',
-    'avaliação psicológica Salvador',
-    'Espaço ANIMA',
-  ],
-  openGraph: {
-    title: 'Espaço ANIMA | Psicoterapia Integrativa em Salvador',
-    description:
-      'Onde a profundidade da escuta psicanalítica encontra a clareza das práticas baseadas em evidências.',
-    images: ['/og-image.png'],
-    locale: 'pt_BR',
-    type: 'website',
-  },
-  twitter: {
-    card: 'summary_large_image',
-    title: 'Espaço ANIMA | Psicoterapia Integrativa em Salvador',
-    description:
-      'Onde a profundidade da escuta psicanalítica encontra a clareza das práticas baseadas em evidências.',
-    images: ['/og-image.png'],
-  },
-  icons: {
-    icon: '/favicon.svg',
-    shortcut: '/favicon.svg',
-  },
-  robots: {
-    index: true,
-    follow: true,
-  },
+  title: 'Espaço ANIMA | Psicoterapia e Avaliação Psicológica em Itapuã',
+  description: 'Reunimos Psicanálise, Terapia Cognitivo-Comportamental e Avaliação Psicológica em um ambiente construído para acolher diferentes formas de sofrimento psíquico.',
 }
 
-export default function RootLayout({
-  children,
-}: {
-  children: React.ReactNode
-}) {
+export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="pt-BR" suppressHydrationWarning>
-      <head>
-        <script src="https://apps.abacus.ai/chatllm/appllm-lib.js" />
-      </head>
-      <body
-        className={`${playfair.variable} ${inter.variable} font-sans antialiased`}
-      >
-        {children}
-        <Toaster />
-        <ChunkLoadErrorHandler />
-        {/* Schema.org LocalBusiness */}
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{
-            __html: JSON.stringify({
-              '@context': 'https://schema.org',
-              '@type': 'MedicalBusiness',
-              name: 'Espaço ANIMA',
-              description:
-                'Clínica de psicoterapia integrativa em Itapuã, Salvador. Psicanálise e TCC.',
-              address: {
-                '@type': 'PostalAddress',
-                streetAddress: 'Rua da Cacimba, s/n, 2º andar - Sala 202',
-                addressLocality: 'Salvador',
-                addressRegion: 'BA',
-                postalCode: '41620-000',
-                addressCountry: 'BR',
-              },
-              telephone: '+55-71-99295-3117',
-              email: 'lucasrdo2@outlook.com',
-              url: process.env.NEXTAUTH_URL ?? 'http://localhost:3000',
-              areaServed: 'Itapuã, Salvador, Bahia',
-              medicalSpecialty: 'Psychiatric',
-            }),
-          }}
-        />
+    <html lang="pt-BR" className="scroll-smooth">
+      <body className={`${playfair.variable} ${lato.variable} font-sans bg-marfim text-grafite antialiased selection:bg-dourado selection:text-grafite`}>
+        <Header />
+        <main className="min-h-screen">
+          <HeroSection />
+          {/* As seções abaixo serão refatoradas nos próximos passos */}
+          {/* <QuemSomos /> */}
+          <TeamPreview />
+          {/* <ComoTrabalhamos /> */}
+          <ServicesPreview />
+          <CtaSection />
+        </main>
+        <Footer />
       </body>
     </html>
   )
