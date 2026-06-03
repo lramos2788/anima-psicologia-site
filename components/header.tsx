@@ -79,10 +79,10 @@ export default function Header() {
               href="https://wa.me/5571992953117"
               target="_blank"
               rel="noopener noreferrer"
-              className="ml-4 flex items-center gap-2 bg-madeira hover:bg-madeira/90 text-marfim px-5 py-2.5 rounded-sm text-sm font-semibold transition-all shadow-sm hover:shadow-md"
+              className="ml-4 flex items-center justify-center gap-2 bg-madeira hover:bg-madeira/90 text-marfim px-5 py-2.5 rounded-sm text-sm font-semibold transition-all shadow-sm hover:shadow-md"
             >
               <Phone className="w-4 h-4" />
-              WhatsApp
+              Entrar em contato
             </a>
           </nav>
 
@@ -124,7 +124,7 @@ export default function Header() {
                 className="mt-4 flex items-center justify-center gap-2 bg-madeira text-marfim px-4 py-3.5 rounded-sm font-semibold shadow-sm"
               >
                 <Phone className="w-5 h-5" />
-                Agendar via WhatsApp
+                Entrar em contato
               </a>
             </nav>
           </motion.div>

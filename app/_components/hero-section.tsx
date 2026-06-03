@@ -12,7 +12,7 @@ export default function HeroSection() {
       {/* Imagem de Fundo Real (Consultório) */}
       <div className="absolute inset-0 w-full h-full">
         <Image 
-          src="/sala1.png"
+          src="/sala2.png"
           alt="Consultório Espaço ANIMA"
           fill
           priority
