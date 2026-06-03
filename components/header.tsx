@@ -43,13 +43,14 @@ export default function Header() {
         <div className="flex items-center justify-between h-20 sm:h-24">
           {/* Logo */}
           <Link href="/" className="flex items-center gap-3">
-            <div className="relative w-12 h-12 flex-shrink-0">
+            {/* Contêiner da imagem ampliado para melhor visibilidade */}
+            <div className="relative w-16 h-16 sm:w-[72px] sm:h-[72px] flex-shrink-0">
               <Image
                 src="/icone.png"
                 alt="Logo Espaço ANIMA"
                 fill
                 className="object-contain"
-                sizes="48px"
+                sizes="(max-width: 640px) 64px, 72px"
                 priority
               />
             </div>
