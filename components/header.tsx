@@ -43,19 +43,19 @@ export default function Header() {
         <div className="flex items-center justify-between h-20 sm:h-24">
           {/* Logo */}
           <Link href="/" className="flex items-center gap-3">
-            {/* Contêiner da imagem ampliado para melhor visibilidade */}
-            <div className="relative w-16 h-16 sm:w-[72px] sm:h-[72px] flex-shrink-0">
+            {/* Contêiner da imagem ampliado para 100px-120px para impacto total */}
+            <div className="relative w-[100px] h-[100px] sm:w-[120px] sm:h-[120px] flex-shrink-0 -ml-2">
               <Image
                 src="/icone.png"
                 alt="Logo Espaço ANIMA"
                 fill
                 className="object-contain"
-                sizes="(max-width: 640px) 64px, 72px"
+                sizes="(max-width: 640px) 100px, 120px"
                 priority
               />
             </div>
-            <div className="flex flex-col">
-              <span className="font-serif text-2xl font-bold text-grafite tracking-tight leading-none">
+            <div className="flex flex-col -ml-4">
+              <span className="font-serif text-3xl font-bold text-grafite tracking-tight leading-none">
                 ANIMA
               </span>
               <span className="text-[10px] uppercase tracking-widest text-grafite/60 font-medium mt-1 hidden sm:block">
