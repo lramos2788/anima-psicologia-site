@@ -1,16 +1,28 @@
 'use client'
 
 import Link from 'next/link'
+import Image from 'next/image'
 import { motion } from 'framer-motion'
 import { ArrowRight } from 'lucide-react'
 
 export default function HeroSection() {
   return (
-    <section className="relative min-h-[90vh] flex flex-col justify-center overflow-hidden bg-marfim px-6 py-24 md:px-12 lg:px-24">
+    <section className="relative min-h-[95vh] flex flex-col justify-center overflow-hidden bg-grafite px-6 py-32 md:px-12 lg:px-24 pt-40">
       
-      {/* Elemento de fundo sutil (meio círculo abstrato) para criar profundidade sem poluir */}
-      <div className="absolute top-0 right-0 -translate-y-12 translate-x-1/3 w-[600px] h-[600px] bg-bege/50 rounded-full blur-3xl opacity-60 pointer-events-none" />
-      <div className="absolute bottom-0 left-0 translate-y-1/3 -translate-x-1/4 w-[400px] h-[400px] bg-dourado/10 rounded-full blur-3xl opacity-50 pointer-events-none" />
+      {/* Imagem de Fundo Real (Consultório) */}
+      <div className="absolute inset-0 w-full h-full">
+        <Image 
+          src="/sala1.png"
+          alt="Consultório Espaço ANIMA"
+          fill
+          priority
+          className="object-cover"
+          sizes="100vw"
+        />
+        {/* Overlay Escuro para Legibilidade Profissional */}
+        <div className="absolute inset-0 bg-grafite/80 mix-blend-multiply" />
+        <div className="absolute inset-0 bg-gradient-to-t from-grafite via-grafite/50 to-transparent opacity-90" />
+      </div>
 
       <div className="relative z-10 max-w-4xl mx-auto text-center">
         
@@ -21,7 +33,7 @@ export default function HeroSection() {
           transition={{ duration: 0.6, ease: "easeOut" }}
           className="mb-8 inline-flex items-center justify-center"
         >
-          <span className="text-madeira text-xs md:text-sm font-bold uppercase tracking-[0.2em]">
+          <span className="text-dourado text-xs md:text-sm font-bold uppercase tracking-[0.2em]">
             Espaço Clínico de Psicologia em Itapuã
           </span>
         </motion.div>
@@ -31,9 +43,9 @@ export default function HeroSection() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.1, ease: "easeOut" }}
-          className="font-serif text-5xl md:text-7xl lg:text-8xl text-grafite leading-[1.1] tracking-tight mb-8"
+          className="font-serif text-5xl md:text-7xl lg:text-8xl text-marfim leading-[1.1] tracking-tight mb-8"
         >
-          Espaço <span className="font-semibold text-madeira">ANIMA</span>
+          Espaço <span className="font-semibold text-dourado">ANIMA</span>
         </motion.h1>
 
         {/* Headline Forte */}
@@ -41,7 +53,7 @@ export default function HeroSection() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.2, ease: "easeOut" }}
-          className="font-serif text-2xl md:text-3xl lg:text-4xl text-grafite/90 mb-6"
+          className="font-serif text-2xl md:text-3xl lg:text-4xl text-marfim/90 mb-6"
         >
           Escuta profunda. Técnica rigorosa. Cuidado singular.
         </motion.h2>
@@ -51,7 +63,7 @@ export default function HeroSection() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.3, ease: "easeOut" }}
-          className="max-w-3xl mx-auto text-base md:text-lg text-grafite/80 leading-relaxed font-light mb-12"
+          className="max-w-3xl mx-auto text-base md:text-lg text-marfim/80 leading-relaxed font-light mb-12"
         >
           Reunimos Psicanálise, Terapia Cognitivo-Comportamental e Avaliação Psicológica em um ambiente construído para acolher diferentes formas de sofrimento psíquico sem abrir mão da excelência clínica.
         </motion.p>
@@ -65,13 +77,13 @@ export default function HeroSection() {
         >
           <Link
             href="#profissionais"
-            className="w-full sm:w-auto inline-flex justify-center items-center gap-2 bg-madeira text-marfim px-8 py-4 rounded-sm font-medium text-sm transition-all hover:bg-madeira/90 shadow-sm"
+            className="w-full sm:w-auto inline-flex justify-center items-center gap-2 bg-madeira text-marfim px-8 py-4 rounded-sm font-medium text-sm transition-all hover:bg-madeira/90 shadow-lg"
           >
             Conhecer os Profissionais
           </Link>
           <Link
             href="#agendamento"
-            className="w-full sm:w-auto inline-flex justify-center items-center gap-2 bg-transparent text-grafite border border-grafite/30 px-8 py-4 rounded-sm font-medium text-sm transition-all hover:bg-grafite/5"
+            className="w-full sm:w-auto inline-flex justify-center items-center gap-2 bg-transparent text-marfim border border-marfim/40 px-8 py-4 rounded-sm font-medium text-sm transition-all hover:bg-marfim/10"
           >
             Solicitar Agendamento
             <ArrowRight className="w-4 h-4" />

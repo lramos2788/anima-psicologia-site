@@ -6,7 +6,12 @@ import Image from 'next/image'
 import { Menu, X, Phone } from 'lucide-react'
 import { motion, AnimatePresence } from 'framer-motion'
 
-const navLinks = [
+interface NavLink {
+  href: string;
+  label: string;
+}
+
+const navLinks: NavLink[] = [
   { href: '/', label: 'Início' },
   { href: '/equipe', label: 'Equipe' },
   { href: '/servicos', label: 'Serviços' },
@@ -30,44 +35,50 @@ export default function Header() {
     <header
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
         scrolled
-          ? 'bg-anima-blue-500/95 backdrop-blur-md shadow-lg'
-          : 'bg-anima-blue-500/80 backdrop-blur-sm'
+          ? 'bg-marfim/95 backdrop-blur-md shadow-sm border-b border-bege'
+          : 'bg-marfim/90 backdrop-blur-sm border-b border-transparent'
       }`}
     >
       <div className="max-w-[1200px] mx-auto px-4 sm:px-6">
-        <div className="flex items-center justify-between h-16 sm:h-18">
+        <div className="flex items-center justify-between h-20 sm:h-24">
           {/* Logo */}
-          <Link href="/" className="flex items-center gap-2">
-            <div className="relative w-9 h-9 rounded-full overflow-hidden">
+          <Link href="/" className="flex items-center gap-3">
+            <div className="relative w-12 h-12 flex-shrink-0">
               <Image
-                src="/images/anima-logo.jpeg"
+                src="/icone.png"
                 alt="Logo Espaço ANIMA"
                 fill
-                className="object-cover"
-                sizes="36px"
+                className="object-contain"
+                sizes="48px"
+                priority
               />
             </div>
-            <span className="font-display text-xl font-bold text-white tracking-tight">
-              ANIMA
-            </span>
+            <div className="flex flex-col">
+              <span className="font-serif text-2xl font-bold text-grafite tracking-tight leading-none">
+                ANIMA
+              </span>
+              <span className="text-[10px] uppercase tracking-widest text-grafite/60 font-medium mt-1 hidden sm:block">
+                Psicologia Clínica
+              </span>
+            </div>
           </Link>
 
           {/* Desktop Nav */}
-          <nav className="hidden lg:flex items-center gap-1">
-            {navLinks?.map((link: any) => (
+          <nav className="hidden lg:flex items-center gap-2">
+            {navLinks.map((link) => (
               <Link
-                key={link?.href}
-                href={link?.href ?? '/'}
-                className="px-3 py-2 text-sm font-medium text-white/80 hover:text-anima-amber-400 transition-colors rounded-md hover:bg-white/5"
+                key={link.href}
+                href={link.href}
+                className="px-3 py-2 text-sm font-medium text-grafite/80 hover:text-madeira transition-colors rounded-md hover:bg-bege/30"
               >
-                {link?.label ?? ''}
+                {link.label}
               </Link>
             ))}
             <a
               href="https://wa.me/5571992953117"
               target="_blank"
               rel="noopener noreferrer"
-              className="ml-2 flex items-center gap-2 bg-anima-amber-400 hover:bg-anima-amber-300 text-anima-blue-800 px-4 py-2 rounded-lg text-sm font-semibold transition-all hover:shadow-md"
+              className="ml-4 flex items-center gap-2 bg-madeira hover:bg-madeira/90 text-marfim px-5 py-2.5 rounded-sm text-sm font-semibold transition-all shadow-sm hover:shadow-md"
             >
               <Phone className="w-4 h-4" />
               WhatsApp
@@ -77,7 +88,7 @@ export default function Header() {
           {/* Mobile toggle */}
           <button
             onClick={() => setMobileOpen(!mobileOpen)}
-            className="lg:hidden text-white p-2"
+            className="lg:hidden text-grafite p-2 hover:bg-bege/50 rounded-sm transition-colors"
             aria-label="Menu"
           >
             {mobileOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
@@ -92,27 +103,27 @@ export default function Header() {
             initial={{ opacity: 0, height: 0 }}
             animate={{ opacity: 1, height: 'auto' }}
             exit={{ opacity: 0, height: 0 }}
-            className="lg:hidden bg-anima-blue-500/98 backdrop-blur-md border-t border-white/10"
+            className="lg:hidden bg-marfim border-t border-bege shadow-xl"
           >
-            <nav className="max-w-[1200px] mx-auto px-4 py-4 flex flex-col gap-1">
-              {navLinks?.map((link: any) => (
+            <nav className="max-w-[1200px] mx-auto px-4 py-6 flex flex-col gap-2">
+              {navLinks.map((link) => (
                 <Link
-                  key={link?.href}
-                  href={link?.href ?? '/'}
+                  key={link.href}
+                  href={link.href}
                   onClick={() => setMobileOpen(false)}
-                  className="px-4 py-3 text-white/80 hover:text-anima-amber-400 hover:bg-white/5 rounded-lg transition-colors text-base"
+                  className="px-4 py-3 text-grafite/90 hover:text-madeira hover:bg-bege/30 rounded-sm transition-colors text-base font-medium"
                 >
-                  {link?.label ?? ''}
+                  {link.label}
                 </Link>
               ))}
               <a
                 href="https://wa.me/5571992953117"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="mt-2 flex items-center justify-center gap-2 bg-anima-amber-400 text-anima-blue-800 px-4 py-3 rounded-lg font-semibold"
+                className="mt-4 flex items-center justify-center gap-2 bg-madeira text-marfim px-4 py-3.5 rounded-sm font-semibold shadow-sm"
               >
-                <Phone className="w-4 h-4" />
-                WhatsApp
+                <Phone className="w-5 h-5" />
+                Agendar via WhatsApp
               </a>
             </nav>
           </motion.div>
