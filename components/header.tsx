@@ -5,6 +5,7 @@ import Link from 'next/link'
 import Image from 'next/image'
 import { Menu, X, Phone } from 'lucide-react'
 import { motion, AnimatePresence } from 'framer-motion'
+import { WHATSAPP_URL } from '@/lib/site'
 
 interface NavLink {
   href: string;
@@ -59,7 +60,7 @@ export default function Header() {
                 ANIMA
               </span>
               <span className="text-[10px] uppercase tracking-widest text-grafite/60 font-medium mt-1 hidden sm:block">
-                Psicologia Clínica
+                Itapuã, Salvador
               </span>
             </div>
           </Link>
@@ -76,7 +77,7 @@ export default function Header() {
               </Link>
             ))}
             <a
-              href="https://wa.me/5571992953117"
+              href={WHATSAPP_URL}
               target="_blank"
               rel="noopener noreferrer"
               className="ml-4 flex items-center justify-center gap-2 bg-madeira hover:bg-madeira/90 text-marfim px-5 py-2.5 rounded-sm text-sm font-semibold transition-all shadow-sm hover:shadow-md"
@@ -118,7 +119,7 @@ export default function Header() {
                 </Link>
               ))}
               <a
-                href="https://wa.me/5571992953117"
+                href={WHATSAPP_URL}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="mt-4 flex items-center justify-center gap-2 bg-madeira text-marfim px-4 py-3.5 rounded-sm font-semibold shadow-sm"

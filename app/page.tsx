@@ -1,8 +1,8 @@
 import Header from '@/components/header'
 import Footer from '@/components/footer'
 import HeroSection from './_components/hero-section'
-import AboutSection from './_components/about-section'
 import TeamPreview from './_components/team-preview'
+import TwoApproachesSection from './_components/two-approaches-section'
 import ServicesPreview from './_components/services-preview'
 import CtaSection from './_components/cta-section'
 
@@ -12,8 +12,8 @@ export default function HomePage() {
       <Header />
       <main>
         <HeroSection />
-        <AboutSection />
         <TeamPreview />
+        <TwoApproachesSection />
         <ServicesPreview />
         <CtaSection />
       </main>
